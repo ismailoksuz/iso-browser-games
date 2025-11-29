@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Neon Brain Pong</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Neon Brain Pong</h1>
+    <button id="howToBtn" class="neon-btn">HOW TO PLAY?</button>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h2>HOW TO PLAY</h2>
+            <p>Click the correct answer! Wrong answers make the ball go faster. Try to survive as long as possible and achieve a high score!</p>
+            <button id="closePopup" class="neon-btn">CLOSE</button>
+        </div>
+    </div>
+    <button id="startBtn" class="neon-btn">START</button>
+    <div class="game" id="gameArea">
+        <canvas id="stars"></canvas>
+        <div id="ball"></div>
+    </div>
+    <div class="question">
+        <span id="questionText"></span>
+        <div id="options"></div>
+    </div>
+    <p class="score">Score: <span id="score">0</span></p>
+    <button id="restartBtn" class="neon-btn">Restart</button>
+    <script src="game.js"></script>
+</body>
+</html>
