@@ -1,0 +1,172 @@
+@media only screen and (min-width : 1025px){
+    body {
+        background-image: linear-gradient(to right top, #000000, #230e17, #3d132b, #561745, #6d1e64);
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        margin: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+      }
+      
+      .board {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        grid-gap: 5px;
+        margin-bottom: 20px;
+        
+      }
+      
+      .cell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: xx-large;
+        transition: 0.5s ease-in-out;
+        width: 100px;
+        height: 100px;
+        border: 1px solid #ccc;
+        font-size: 36px;
+        cursor: pointer;
+        background-color: rgb(239, 203, 241);
+        border: 1px solid rgb(103, 32, 107);
+      }
+    
+      .cell:hover {
+        transition: 0.5s ease-in-out;
+        width: 100px;
+        height: 100px;
+        border: 1px solid #ccc;
+        font-size: 36px;
+        cursor: pointer;
+        background-color: rgb(206, 128, 210);
+        border: 2px solid rgb(0, 0, 0);
+      }
+    
+      .container h1 {
+        display: inline-block;
+        position: relative;
+        color: rgb(103, 32, 107);
+        text-decoration: none;
+        transition: 0.5s ease-in-out;
+    }
+    
+    .container h1::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        border-radius: 5px;
+        height: 0.05em;
+        bottom: 0;
+        left: 0;
+        background: currentcolor;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+    .container h1:hover {
+        color: rgb(178, 115, 181);
+        transition: 0.5s ease-in-out;
+        
+    }
+    
+      .container h1:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+    
+    .container {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-right: 50px;
+        padding-left: 50px;
+        border-radius: 50px;
+        color: rgb(103, 32, 107);
+        background-image: linear-gradient(to right top, #ffffff, #f6f2fe, #f1e3fa, #efd4f4, #f0c4eb);
+        
+    }
+    
+    svg {
+        color: rgb(178, 115, 181);
+        transition: 0.5s ease-in-out;
+    }
+    
+    svg:hover {
+        color: rgb(103, 32, 107);
+        transition: 0.5s ease-in-out;
+    }
+}
+
+@media only screen and (max-width : 1024px){
+    body {
+        background-image: linear-gradient(to right top, #ffffff, #f6f2fe, #f1e3fa, #efd4f4, #f0c4eb);
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        width: 100%;
+        height: 100vh;
+      }
+      
+      .board {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        grid-gap: 0px;
+        text-align: center;
+        align-items: center;
+        
+      }
+      
+      .cell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: xx-large;
+        transition: 0.5s ease-in-out;
+        width: 100px;
+        height: 100px;
+        cursor: pointer;
+        background-color: rgb(239, 203, 241);
+        border: 1px solid rgb(103, 32, 107);
+      }
+    
+      .cell:hover {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: xx-large;
+        transition: 0.5s ease-in-out;
+        width: 100px;
+        height: 100px;
+        cursor: pointer;
+        background-color: rgb(206, 128, 210);
+        border: 1px solid rgb(0, 0, 0);
+      }
+    
+      .container h1 {
+        color: rgb(103, 32, 107);
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .container {
+        color: rgb(103, 32, 107);
+        
+    }
+    
+    svg {
+        margin-top: 10px;
+        color: rgb(178, 115, 181);
+        transition: 0.5s ease-in-out;
+    }
+    
+    svg:hover {
+        margin-top: 10px;
+        color: rgb(103, 32, 107);
+        transition: 0.5s ease-in-out;
+    }
+}
+    
