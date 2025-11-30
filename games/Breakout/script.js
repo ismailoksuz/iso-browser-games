@@ -19,7 +19,7 @@
       canvas.width = W; canvas.height = H;
       paddle.w = Math.max(90, Math.min(240, Math.floor(W*0.18)));
       paddle.x = Math.max(0, Math.min(W-paddle.w, paddle.x || (W-paddle.w)/2));
-      paddle.y = H - 40;
+      paddle.y = H - 20;
     }
     window.addEventListener('resize', resize, {passive:true});
     resize();
