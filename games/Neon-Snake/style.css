@@ -1,72 +1,105 @@
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background: #030014;
-    font-family: 'Wallpoet', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
-  header {
-    text-align: center;
-    color: #ff00ff;
-    margin: 20px 0 10px 0;
-  }
-  
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #030014;
+  font-family: 'Wallpoet', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+header {
+  text-align: center;
+  color: #ff00ff;
+  margin: 20px 0 10px 0;
+  touch-action: auto;
+}
+header h1 {
+  margin: 0;
+  font-size: 48px;
+}
+header a {
+  color: #00eaff;
+  text-decoration: none;
+  font-size: 16px;
+}
+#container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+#gameCanvas {
+  background: rgba(10,10,25,0.6);
+  backdrop-filter: blur(6px);
+  border: 2px solid #ff00ff;
+  box-shadow: 0 0 25px #ff00ff inset, 0 0 25px #00eaff;
+  border-radius: 10px;
+  display: block;
+  touch-action: none;
+}
+#scorePopup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: rgba(10,10,25,0.95);
+  padding: 30px 40px;
+  border: 3px solid #ff00ff;
+  border-radius: 15px;
+  text-align: center;
+  display: none;
+  box-shadow: 0 0 40px #ff00ff, 0 0 60px #00eaff;
+  z-index: 1000;
+}
+#scoreText {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #ff00ff;
+}
+#scorePopup button {
+  margin-top: 10px;
+  padding: 12px 30px;
+  border: none;
+  background: linear-gradient(135deg, #ff00ff, #00eaff);
+  color: #fff;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: 'Wallpoet', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 0 20px #ff00ff;
+  touch-action: auto;
+  -webkit-tap-highlight-color: rgba(255, 0, 255, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+#scorePopup button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px #00eaff;
+}
+#scorePopup button:active {
+  transform: scale(0.95);
+}
+@media (max-width: 768px) {
   header h1 {
-    margin: 0;
-    font-size: 48px;
+      font-size: 36px;
   }
-  
   header a {
-    color: #00eaff;
-    text-decoration: none;
-    font-size: 16px;
+      font-size: 14px;
   }
-  
-  #container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    position: relative;
+  #scoreText {
+      font-size: 18px;
   }
-  
-  #gameCanvas {
-    background: rgba(10,10,25,0.6);
-    backdrop-filter: blur(6px);
-    border: 2px solid #ff00ff;
-    box-shadow: 0 0 25px #ff00ff inset, 0 0 25px #00eaff;
-    border-radius: 10px;
-    display: block;
-  }
-  
-  #scorePopup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background: rgba(10,10,25,0.9);
-    padding: 20px;
-    border: 2px solid #ff00ff;
-    border-radius: 10px;
-    text-align: center;
-    display: none;
-  }
-  
   #scorePopup button {
-    margin-top: 10px;
-    padding: 8px 16px;
-    border: none;
-    background: #ff00ff;
-    color: #fff;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
+      font-size: 16px;
+      padding: 10px 25px;
   }
+}
