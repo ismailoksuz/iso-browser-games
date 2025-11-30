@@ -105,3 +105,13 @@ a.credit.visible {
     white-space: nowrap;
     border: 0
 }
+
+@media (max-height: 700px) {
+  header {
+    display: none;
+  }
+  
+  #gameArea {
+    height: 100vh;
+  }
+}
