@@ -108,7 +108,7 @@ a.credit.visible {
 
 @media (max-height: 700px) {
   header {
-    display: none;
+    display: none !important;
   }
   
   #gameArea {
