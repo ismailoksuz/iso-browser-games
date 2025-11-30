@@ -28,10 +28,7 @@ function addNumber() {
     let o = [];
     for (let i = 0; i < 4; i++)
         for (let j = 0; j < 4; j++)
-            if (grid[i][j] === 0) o.push({
-                x: i,
-                y: j
-            });
+            if (grid[i][j] === 0) o.push({ x: i, y: j });
     if (o.length === 0) return;
     let s = o[Math.floor(Math.random() * o.length)];
     grid[s.x][s.y] = Math.random() < 0.9 ? 2 : 4;
@@ -50,6 +47,7 @@ function draw() {
             game.appendChild(d);
         }
     }
+    resizeTiles();
 }
 
 function slide(row, i) {
@@ -67,12 +65,7 @@ function slide(row, i) {
 }
 
 function rotate() {
-    let n = [
-        [],
-        [],
-        [],
-        []
-    ];
+    let n = [[], [], [], []];
     for (let i = 0; i < 4; i++)
         for (let j = 0; j < 4; j++) n[i][j] = grid[j][i];
     grid = n;
@@ -124,8 +117,40 @@ function move(d) {
     if (m) {
         addNumber();
         draw();
+        checkGameOver();
     }
 }
+
+function checkGameOver() {
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            if (grid[i][j] === 0) return;
+            if (j < 3 && grid[i][j] === grid[i][j + 1]) return;
+            if (i < 3 && grid[i][j] === grid[i + 1][j]) return;
+        }
+    }
+    showGameOver();
+}
+
+function showGameOver() {
+    const overlay = document.createElement("div");
+    overlay.id = "gameOverOverlay";
+    overlay.innerHTML = `
+        <div id="gameOverBox">
+            <div id="gameOverText">GAME OVER</div>
+            <button id="restartBtn">RESTART</button>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+    document.getElementById("restartBtn").addEventListener("click", restart);
+}
+
+function restart() {
+    const overlay = document.getElementById("gameOverOverlay");
+    if (overlay) overlay.remove();
+    setup();
+}
+
 document.addEventListener("keydown", e => {
     if (e.key === "ArrowLeft") move("LEFT");
     if (e.key === "ArrowRight") move("RIGHT");
@@ -158,18 +183,9 @@ function flicks() {
     }
 }
 
-function resizeBoard() {
+function resizeTiles() {
     const game = document.getElementById("game");
-    const isMobile = window.innerWidth <= 768;
-    let boardSize;
-    if (isMobile) {
-        const shortSide = Math.min(window.innerWidth, window.innerHeight);
-        boardSize = shortSide * 0.95;
-    } else {
-        boardSize = 420;
-    }
-    game.style.width = boardSize + "px";
-    game.style.height = boardSize + "px";
+    const boardSize = game.offsetWidth;
     const tileFontSize = boardSize / 10;
     const tiles = document.querySelectorAll('.tile');
     tiles.forEach(tile => {
@@ -177,12 +193,9 @@ function resizeBoard() {
     });
 }
 
-window.addEventListener("resize", resizeBoard);
-
-resizeBoard();
-
-window.addEventListener("resize", resizeBoard);
-resizeBoard();
+window.addEventListener("resize", () => {
+    resizeTiles();
+});
 
 stars();
 flicks();
@@ -191,27 +204,32 @@ setup();
 let startX = 0, startY = 0;
 
 document.addEventListener("touchstart", e => {
+    if (e.target.closest('#restartBtn')) return;
+    e.preventDefault();
     const t = e.touches[0];
     startX = t.clientX;
     startY = t.clientY;
-});
+}, { passive: false });
 
 document.addEventListener("touchmove", e => {
+    if (e.target.closest('#restartBtn')) return;
+    e.preventDefault();
     if (!startX || !startY) return;
-
     let t = e.touches[0];
     let dx = t.clientX - startX;
     let dy = t.clientY - startY;
-
-    if (Math.abs(dx) > Math.abs(dy)) {
-        if (dx > 0) move("RIGHT");
-        else move("LEFT");
-    } else {
-        if (dy > 0) move("DOWN");
-        else move("UP");
+    
+    if (Math.abs(dx) > 30 || Math.abs(dy) > 30) {
+        if (Math.abs(dx) > Math.abs(dy)) {
+            if (dx > 0) move("RIGHT");
+            else move("LEFT");
+        } else {
+            if (dy > 0) move("DOWN");
+            else move("UP");
+        }
+        startX = 0;
+        startY = 0;
     }
-
-    startX = 0;
-    startY = 0;
-});
-  
+}, 
+{ 
+    passive: false });
