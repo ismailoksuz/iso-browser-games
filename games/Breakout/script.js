@@ -125,17 +125,22 @@
     function draw(){
       ctx.clearRect(0,0,W,H);
       ctx.fillStyle = '#07102a'; ctx.fillRect(0,0,W,H);
-      for(const b of bricks){
-        if(!b.alive) continue;
-        ctx.fillStyle = '#ff6bd6';
-        ctx.fillRect(b.x, b.y, b.w, b.h);
+      if(running) {
+        for(const b of bricks){
+          if(!b.alive) continue;
+          ctx.fillStyle = '#ff6bd6';
+          ctx.fillRect(b.x, b.y, b.w, b.h);
+      }
       }
       ctx.fillStyle = '#00ffe1'; ctx.fillRect(paddle.x, paddle.y, paddle.w, paddle.h);
-      for(const ball of [].concat(balls, extraBalls)){
-        ctx.beginPath(); ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI*2); ctx.fillStyle = '#fff'; ctx.fill(); ctx.closePath();
-      }
-      ctx.fillStyle = '#fff'; ctx.font = '12px "Press Start 2P"'; ctx.fillText('SCORE: ' + score, 12, 20);
+    if(running) {
+    for(const ball of [].concat(balls, extraBalls)){
+      ctx.beginPath(); ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI*2); ctx.fillStyle = '#fff'; ctx.fill(); ctx.closePath();
     }
+  }
+  
+  ctx.fillStyle = '#fff'; ctx.font = '12px "Press Start 2P"'; ctx.fillText('SCORE: ' + score, 12, 20);
+}
 
     let last = 0;
     function loop(t){ last = t; update(); draw(); requestAnimationFrame(loop); }
