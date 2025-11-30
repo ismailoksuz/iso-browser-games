@@ -13,9 +13,11 @@
   const paddle = { w:140, h:12, x:0, y:0 };
 
   function resize(){
-    const header = document.querySelector('header');
+    // const header = document.querySelector('header');
+    // W = window.innerWidth;
+    // H = window.innerHeight - header.getBoundingClientRect().height;
     W = window.innerWidth;
-    H = window.innerHeight - header.getBoundingClientRect().height;
+    H = window.innerHeight
     canvas.width = W; canvas.height = H;
     paddle.w = Math.max(90, Math.min(240, Math.floor(W*0.18)));
     paddle.x = Math.max(0, Math.min(W-paddle.w, paddle.x || (W-paddle.w)/2));
@@ -49,7 +51,7 @@
     createBricks();
     paddle.w = Math.max(90, Math.min(240, Math.floor(W*0.18)));
     paddle.x = (W - paddle.w)/2;
-    paddle.y = H - 40;
+    paddle.y = H - 20;
     resetBalls();
     running = false;
     playBtn.style.display = 'block';
