@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Neon Brain Pong</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
     <h1>Neon Brain Pong</h1>
@@ -16,6 +17,11 @@
         </div>
     </div>
     <button id="startBtn" class="neon-btn">START</button>
+    <div class="left-panel">
+        <p class="score">Score: <span id="score">0</span></p>
+        <button id="restartBtn" class="neon-btn">Restart</button>
+        <button id="howToBtn2" class="neon-btn">HOW TO PLAY?</button>
+    </div>
     <div class="game" id="gameArea">
         <canvas id="stars"></canvas>
         <div id="ball"></div>
@@ -24,8 +30,8 @@
         <span id="questionText"></span>
         <div id="options"></div>
     </div>
-    <p class="score">Score: <span id="score">0</span></p>
-    <button id="restartBtn" class="neon-btn">Restart</button>
+    <p class="score">Score: <span id="score2">0</span></p>
+    <button id="restartBtn2" class="neon-btn">Restart</button>
     <script src="game.js"></script>
 </body>
 </html>
